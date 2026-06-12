@@ -1,0 +1,13 @@
+# imagen de Ubuntu solicitada para C1
+FROM ubuntu:20.10
+
+# redirigir repositorios obsoletos (EOL) a old-releases
+RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
+# actualizar repositorios e instalar el cliente OpenSSH
+RUN apt-get update && \
+    apt-get install -y openssh-client iproute2 iputils-ping nano net-tools sudo && \
+    apt-get clean
+
+# al iniciar el contenedor, abrimos una terminal bash
+CMD ["/bin/bash"]

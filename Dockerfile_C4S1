@@ -1,0 +1,23 @@
+# imagen de Ubuntu solicitada para C4/S1
+FROM ubuntu:22.10
+
+# Ubuntu 22.10 (Kinetic Kudu) también está EOL
+RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
+# Instalar el SERVIDOR OpenSSH, el cliente, y utilidades de red
+RUN apt-get update && \
+    apt-get install -y openssh-server openssh-client iproute2 iputils-ping net-tools sudo nano && \
+    apt-get clean
+
+# El servicio sshd requiere este directorio para funcionar
+RUN mkdir -p /var/run/sshd
+
+# Crear usuario "prueba", se asigna carpeta home, shell bash y se establece la contraseña "prueba"
+RUN useradd -rm -d /home/prueba -s /bin/bash -g root -G sudo -u 1000 prueba && \
+    echo 'prueba:prueba' | chpasswd
+
+# Se expone el puerto estándar de SSH
+EXPOSE 22
+
+# Se inicia el servicio SSH en primer plano (-D) para mantener el contenedor vivo
+CMD ["/usr/sbin/sshd", "-D"]
