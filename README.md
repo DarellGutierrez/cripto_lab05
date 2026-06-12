@@ -6,15 +6,31 @@ Este repositorio contiene los archivos de configuración `Dockerfile` desarrolla
 
 ## Estructura del Repositorio
 
-El repositorio cuenta con los siguientes archivos:
 
--   `Dockerfile-C1`: Configuración para el Cliente 1 (Ubuntu 16.10 - OpenSSH 7.3p1).
+El repositorio está organizado de la siguiente manera:
     
--   `Dockerfile-C2`: Configuración para el Cliente 2 (Ubuntu 18.10 - OpenSSH 7.7p1).
+   -   `Dockerfile-C1`: Configuración para el Cliente 1 (Ubuntu 16.10 - OpenSSH 7.3p1).
+       
+   -   `Dockerfile-C2`: Configuración para el Cliente 2 (Ubuntu 18.10 - OpenSSH 7.7p1).
+       
+   -   `Dockerfile-C3`: Configuración para el Cliente 3 (Ubuntu 20.10 - OpenSSH 8.3p1).
+       
+   -   `Dockerfile-C4-S1`: Configuración para el Cliente 4 y Servidor S1 (Ubuntu 22.10 - OpenSSH 9.0p1). _Incluye la creación del usuario "prueba"._
+        
+-   **`capturas/`** (Evidencia forense en formato `.pcap` para Wireshark):
     
--   `Dockerfile-C3`: Configuración para el Cliente 3 (Ubuntu 20.10 - OpenSSH 8.3p1).
-    
--   `Dockerfile-C4-S1`: Configuración para el Cliente 4 y Servidor S1 (Ubuntu 22.10 - OpenSSH 9.0p1). _Incluye la creación del usuario "prueba"._
+    -   `captura_c1.pcap`: Handshake del Cliente 1 al Servidor.
+        
+    -   `captura_c2.pcap`: Handshake del Cliente 2 al Servidor.
+        
+    -   `captura_c3.pcap`: Handshake del Cliente 3 al Servidor.
+        
+    -   `captura_c4_loopback.pcap`: Handshake interno de C4 hacia S1 (interfaz `lo`).
+        
+    -   `captura_informante.pcap`: Tráfico replicado del informante con versión ocultada (`OpenSSH_?`) forzando la interfaz `eth0`.
+        
+    -   `captura_parte3_reducida.pcap`: Captura del servidor modificado con tamaño de _Key Exchange Init_ menor a 300 bytes.
+        
 
 ## Instrucciones de Uso
 
