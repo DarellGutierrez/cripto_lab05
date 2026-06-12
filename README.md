@@ -17,7 +17,7 @@ El repositorio está organizado de la siguiente manera:
        
    -   `Dockerfile_C4S1`: Configuración para el Cliente 4 y Servidor S1 (Ubuntu 22.10 - OpenSSH 9.0p1). _Incluye la creación del usuario "prueba"._
         
--   **`capturas/`** (Evidencia forense en formato `.pcap` para Wireshark):
+-   **`capturas_wireshark/`** (Evidencia forense en formato `.pcap` para Wireshark):
     
     -   `captura_c1.pcap`: Handshake del Cliente 1 al Servidor.
         
